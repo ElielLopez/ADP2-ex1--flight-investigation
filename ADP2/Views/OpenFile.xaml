@@ -8,7 +8,9 @@
              d:DesignHeight="35" d:DesignWidth="285">
     <Grid Background="Gray" Margin="-15,0,-75,0">
         <Button x:Name="openFileButton" Content="Open File" HorizontalAlignment="Left" VerticalAlignment="Top" Width="79" Height="27" Margin="3,4,0,0" Click="OpenFile_Click"/>
-        <TextBox x:Name="fileNameTextBox" HorizontalAlignment="Left" Height="27" Margin="97,4,-90,0" TextWrapping="Wrap" Text="{Binding Path=choosenFileName}" VerticalAlignment="Top" Width="275"/>
+        <TextBox x:Name="fileNameTextBox" HorizontalAlignment="Left" Height="27" Margin="97,4,0,0" TextWrapping="Wrap" Text="{Binding Path=choosenFileName}" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Open XML" Click="OpenXMLFile_Click" HorizontalAlignment="Left" Margin="182,5,0,0" VerticalAlignment="Top" Width="74" Height="26"/>
+        <TextBox x:Name="xmlFileNAmeTextBox" HorizontalAlignment="Left" Height="26" Margin="261,5,0,0" TextWrapping="Wrap" Text="{Binding Path=choosenXMLFileName}" VerticalAlignment="Top" Width="109"/>
 
     </Grid>
 </UserControl>
