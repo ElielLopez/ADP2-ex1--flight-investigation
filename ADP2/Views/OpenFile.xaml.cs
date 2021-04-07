@@ -36,15 +36,15 @@ namespace ADP2.Views
             try
             {
                 TcpClient client = new TcpClient("127.0.0.1", 5400);
-                NetworkStream stream = client.GetStream();
+                StreamWriter stream = new StreamWriter(client.GetStream());
                 var lines = File.ReadLines("reg_flight.csv"); //TODO
                 //this._num_line = 0;
 
                 string l = lines.ElementAt(lineNumber);
                 while(l != null)
                 {
-                    Byte[] data = System.Text.Encoding.ASCII.GetBytes(l);
-                    stream.Write(data, 0, data.Length);
+                    //Byte[] data = System.Text.Encoding.ASCII.GetBytes(l);
+                    stream.Write(l, 0, l.Length);
                     Thread.Sleep(1000 / 10);
                     m.WaitOne();
                     lineNumber++;
