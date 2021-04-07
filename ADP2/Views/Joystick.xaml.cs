@@ -166,7 +166,7 @@ namespace ADP2.Views
             centerKnob.Begin();
         }
 
-        private void centerKnob_Completed(object sender, EventArgs e)
+        private void CenterKnob_Completed(object sender, EventArgs e)
         {
             Aileron = Elevator = _prevAileron = _prevElevator = 0;
             Released?.Invoke(this);

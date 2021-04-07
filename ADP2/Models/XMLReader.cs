@@ -11,7 +11,7 @@ namespace ADP2.Models
     {
         public XMLReader()
         {
-            List<string> features = new List<string>();
+/*            List<string> features = new List<string>();
 
             try
             {
@@ -24,7 +24,7 @@ namespace ADP2.Models
             {
                 Console.WriteLine("Thie file could not be read");
                 Console.WriteLine(e.Message);
-            }
+            }*/
         }
     }
 }
