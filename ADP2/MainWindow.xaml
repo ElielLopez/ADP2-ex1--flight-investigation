@@ -94,7 +94,20 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Canvas x:Name="featureNames" Grid.Row="0" Grid.Column="0" Background="GhostWhite" />
+                <Canvas x:Name="featureNames" Grid.Row="0" Grid.Column="0" Background="GhostWhite">
+                    <ListBox>
+                        <ListBox.Items>
+                            <ListBoxItem Content="Item 1"/>
+                            <ListBoxItem Content="Item 2"/>
+                            <ListBoxItem Content="Item 3"/>
+                            <ListBoxItem Content="Item 4"/>
+                            <ListBoxItem Content="Item 5"/>
+                            <ListBoxItem Content="Item 6"/>
+                            <ListBoxItem Content="Item 7"/>
+                        </ListBox.Items>
+                    </ListBox>
+                </Canvas>
+                <!--ProgressBar x:Name="videoPregress" HorizontalAlignment="Left" Height="12" Margin="81,177,-484,-49" Grid.Row="1" VerticalAlignment="Top" Width="651" Grid.Column="1"/-->
 
             </Grid>
         </Grid>
@@ -116,7 +129,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Button Content="Play" Grid.Column="4" Margin="37,42,72,45">
+            <Button Content="Play" Grid.Column="4" Margin="37,51,72,36">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="75"/>
@@ -124,7 +137,7 @@
                 </Button.Resources>
             </Button>
 
-            <Button Content="Stop" Grid.Column="3" Margin="70,42,40,45">
+            <Button Content="Stop" Grid.Column="3" Margin="70,51,40,36">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="75"/>
@@ -132,7 +145,7 @@
                 </Button.Resources>
             </Button>
 
-            <Button Content="Next" Grid.Column="5" Margin="105,42,10,45">
+            <Button Content="Next" Grid.Column="5" Margin="105,51,10,36">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="75"/>
@@ -140,7 +153,7 @@
                 </Button.Resources>
             </Button>
 
-            <Button Content="Farward" Grid.Column="4" Margin="157,42,125,45" Grid.ColumnSpan="2">
+            <Button Content="Farward" Grid.Column="4" Margin="157,51,125,36" Grid.ColumnSpan="2">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="75"/>
@@ -148,7 +161,7 @@
                 </Button.Resources>
             </Button>
 
-            <Button Content="Backwards" Grid.Column="2" Margin="121,42,155,45" Grid.ColumnSpan="2">
+            <Button Content="Backwards" Grid.Column="2" Margin="121,51,155,36" Grid.ColumnSpan="2">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="75"/>
@@ -156,7 +169,7 @@
                 </Button.Resources>
             </Button>
 
-            <Button Content="Previous" Margin="10,42,99,45" Grid.Column="2">
+            <Button Content="Previous" Margin="10,51,99,36" Grid.Column="2">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="75"/>
@@ -164,8 +177,10 @@
                 </Button.Resources>
             </Button>
 
-            <Slider x:Name="timeSlider" Background="DimGray" Foreground="Black" Maximum="1" Minimum="-1"
-                HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,101,0,0" Width="660" IsSnapToTickEnabled="False" Height="31" Grid.ColumnSpan="4" Grid.Column="2"/>
+            <Slider x:Name="timeSlider" Background="DimGray" Foreground="Black" Maximum="2174" Minimum="0" TickFrequency="10" TickPlacement="BottomRight" 
+                HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2,96,0,5" Width="660" IsSnapToTickEnabled="False" Height="31" Grid.ColumnSpan="4" Grid.Column="2"
+                    Value="{Binding Path=numOfLine}"/>
+
 
         </Grid>
         <!--End Of Media Player-->
@@ -214,6 +229,12 @@
 
         </Grid>
         <!--End of Open Buttons-->
+
+        <Grid Grid.Column="1" Grid.Row="2">
+            <Label Content="Play Speed" HorizontalAlignment="Left" Margin="-162,5,0,0" VerticalAlignment="Top" Width="83"/>
+            <TextBlock x:Name="playSpeedValue" Text="{Binding Path=speedReg}" Margin="-74,10,474,101" Background="White"/>
+            <TextBlock Text="00:00:00" Margin="37,10,363,101" Background="White"/>
+        </Grid>
 
     </Grid>
 </Window>
