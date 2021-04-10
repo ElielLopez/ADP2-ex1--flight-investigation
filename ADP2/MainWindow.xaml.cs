@@ -31,7 +31,16 @@ namespace ADP2
 
         int sleepTime = 100;
         int counter = 0;
-        int lineNumber = 1;
+        //int lineNumber = 0;
+        double value = 0;
+        bool play = true;
+        bool pause = false;
+
+        public double Value
+        {
+            get { return value; }
+            set { }
+        }
 
         private void OpenFile_Click(object sender, RoutedEventArgs e)
         {
@@ -64,64 +73,41 @@ namespace ADP2
 
 
             string[] arrText;
-            string lineThreeHundred;
+            string currLine;
 
             arrText = File.ReadAllLines(fileNameTextBox.Text);
-            //lineThreeHundred = arrText[counter];
 
-            //Mutex m = new Mutex();
-            //int lineNumber = 0;
             try
             {
                 TcpClient client = new TcpClient("127.0.0.1", 5400);
                 NetworkStream stream = client.GetStream();
-                //StreamWriter stream = new StreamWriter(client.GetStream());
-                var lines = File.ReadLines(fileNameTextBox.Text); //TODO
-                                                                  //this._num_line = 0;
+                var lines = File.ReadLines(fileNameTextBox.Text); 
 
-                //string l = lines.ElementAt(lineNumber);
-                //while(l != null)
-
-                /*                foreach (string l in lines)
-                                {
-                                    Byte[] data = System.Text.Encoding.ASCII.GetBytes(l + "\r\n");
-                                    stream.Write(data, 0, data.Length);
-                                    Thread.Sleep(sleepTime);
-                                    //m.WaitOne();
-                                    //lineNumber++;
-                                    //m.ReleaseMutex();
-                                    //l = lines.ElementAt(lineNumber);
-                                }*/
-
-                // int x = Int32.Parse(str);
-                for (int i = 1; i < counter; i++)
+                for (int i = 0; i < counter; i++, value++) // counter = 2147
                 {
-                    lineNumber = (int)timeSlider.Value;
-                    //lineNumber *= 10;
-                    Console.WriteLine(lineNumber);
-                    i = i + lineNumber;
-                    lineThreeHundred = arrText[i];
-                    Byte[] data = System.Text.Encoding.ASCII.GetBytes(lineThreeHundred + "\r\n");
+                    Console.WriteLine("the VALUE is {0}", value);
+                    //i = (int)value;
+                    i = (int)this.Value;
+                    currLine = arrText[i];
+                    Byte[] data = System.Text.Encoding.ASCII.GetBytes(currLine + "\r\n");
                     stream.Write(data, 0, data.Length);
                     Thread.Sleep(sleepTime);
+                    while(pause == true)
+                    {
+                        Thread.Sleep(1000);
+                        if (play == true)
+                            break;
+                    }
                 }
-
-
 
                 stream.Close();
                 client.Close();
-
             }
             catch (Exception _e)
             {
                 Console.WriteLine("error");
             }
-
-
         }
-
-
-
 
         private void OpenXMLFile_Click(object sender, RoutedEventArgs e)
         {
@@ -152,6 +138,26 @@ namespace ADP2
                 listOfNamesFinal.Add(listOfNames[i]);
                 Console.WriteLine(listOfNamesFinal[i]);
             }
+        }
+
+        private void DragSlider(object sender, RoutedEventArgs e)
+        {
+            var slider = sender as Slider;
+            value  = slider.Value;
+            // ... Set Window Title.
+            this.Title = "Value: " + value.ToString("0.0") + "/" + slider.Maximum;
+        }
+        //Thumb.DragCompleted="DragSlider"
+
+        private void isPlay(object sender, RoutedEventArgs e)
+        {
+            play = true;
+            pause = false;
+        }
+        private void isPause(object sender, RoutedEventArgs e)
+        {
+            pause = true;
+            play = false;
         }
     }
 }

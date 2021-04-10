@@ -129,7 +129,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Button Content="Play" Grid.Column="4" Margin="37,51,72,36">
+            <Button Content="Play" Grid.Column="4" Margin="37,51,72,36" Click="isPlay">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="75"/>
@@ -137,7 +137,7 @@
                 </Button.Resources>
             </Button>
 
-            <Button Content="Stop" Grid.Column="3" Margin="70,51,40,36">
+            <Button Content="Stop" Grid.Column="3" Margin="70,51,40,36" Click="isPause">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="75"/>
@@ -179,8 +179,7 @@
 
             <Slider x:Name="timeSlider" Background="DimGray" Foreground="Black" Maximum="2174" Minimum="0" TickFrequency="10" TickPlacement="BottomRight" 
                 HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2,96,0,5" Width="660" IsSnapToTickEnabled="False" Height="31" Grid.ColumnSpan="4" Grid.Column="2"
-                    Value="{Binding Path=numOfLine}"/>
-
+                    Value="{Binding Path=numOfLine}" ValueChanged="DragSlider"/>
 
         </Grid>
         <!--End Of Media Player-->
