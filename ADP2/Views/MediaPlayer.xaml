@@ -82,9 +82,8 @@
                     Value="{Binding Path=numOfLine}" ValueChanged="DragSlider" Grid.Row="2"/>
 
         <Label Content="Play Speed" HorizontalAlignment="Left" VerticalAlignment="Top" Width="83" Height="26"/>
-        <TextBlock x:Name="playSpeedValue" Text="{Binding Path=speedReg}" Background="White" Grid.Column="1"/>
+        <TextBlock x:Name="playSpeedValue" Text="{Binding Path=setSpeed}" Background="White" Grid.Column="1"/>
         <TextBlock Text="00:00:00" Background="White" Grid.Column="2"/>
-
 
         <!--ProgressBar x:Name="scrollBar" Value="{Binding VM_scrollBar}" Grid.ColumnSpan="2" Margin="31,25,49,0" Grid.Row="2"-->
         

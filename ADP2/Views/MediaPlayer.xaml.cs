@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ADP2.Models;
+using ADP2.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,13 @@ namespace ADP2.Views
     /// </summary>
     public partial class mediaPlayer : UserControl
     {
+        MediaPlayerViewModel vm;
         public mediaPlayer()
         {
             InitializeComponent();
+            vm = new MediaPlayerViewModel(new MediaPlayerModel());
+            DataContext = vm;
         }
+
     }
 }

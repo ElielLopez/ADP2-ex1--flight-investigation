@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ADP2.Models
 {
-    class DashBoardModel 
+    public class DashBoardModel
     {
 
     }
