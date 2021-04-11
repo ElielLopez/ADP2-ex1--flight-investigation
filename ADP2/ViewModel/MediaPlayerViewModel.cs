@@ -12,6 +12,8 @@ namespace ADP2.ViewModel
     {
         private IMediaPlayerModel model;
         private float speedVal;
+        volatile Boolean isPlayPressed = true;
+        volatile Boolean isPausePressed = false;
         public MediaPlayerViewModel(IMediaPlayerModel model)
         {
             this.model = model;
@@ -27,12 +29,22 @@ namespace ADP2.ViewModel
             {
                 return model.Play;
             }
+            set
+            {
+                isPlayPressed = value;
+                model.start();
+            }
         }
         public bool VM_Pause
         {
             get
             {
                 return model.Pause;
+            }
+            set
+            {
+                isPausePressed = value;
+                model.stop();
             }
         }
 
@@ -83,13 +95,13 @@ namespace ADP2.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public void StartPlay()
+/*        public void StartPlay()
         {
             this.model.start();
         }
-        public void StopPlay()
+        public void StopPlay(Boolean paused)
         {
             this.model.stop();
-        }
+        }*/
     }
 }

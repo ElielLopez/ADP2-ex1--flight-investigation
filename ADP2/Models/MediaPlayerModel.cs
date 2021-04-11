@@ -10,8 +10,8 @@ namespace ADP2.Models
 {
     class MediaPlayerModel : IMediaPlayerModel
     {
-        private bool play;
-        private bool pause;
+        public bool play;
+        public bool pause;
 
 
         public bool Play {
@@ -25,8 +25,11 @@ namespace ADP2.Models
             {
                 return pause;
             }
-            
-            set => throw new NotImplementedException(); }
+            set
+            {
+                //this.pause = 
+            }
+        }
         public float Forward { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public float Backward { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public float Speed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -46,16 +49,16 @@ namespace ADP2.Models
             throw new NotImplementedException();
         }
 
-        void IMediaPlayerModel.start()
+        public void start()
         {
-            play = true;
-            pause = false;
+            this.play = true;
+            this.pause = false;
         }
 
-        void IMediaPlayerModel.stop()
+        public void stop()
         {
-            play = false;
-            pause = true;
+            this.play = false;
+            this.pause = true;
         }
     }
 }

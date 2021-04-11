@@ -28,13 +28,9 @@ namespace ADP2.Views
         public FileLoader()
         {
             InitializeComponent();
-            vm = new FileLoaderViewModel(new FileLoaderModel());
+            vm = new FileLoaderViewModel(new UserGUI());
             DataContext = vm;
         }
-/*        public string VM_FileName
-        {
-            get { return vm.filename; }
-        }*/
 
         private void OpenFile_Click(object sender, RoutedEventArgs e)
         {

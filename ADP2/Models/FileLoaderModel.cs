@@ -12,12 +12,14 @@ using System.Threading.Tasks;
 
 namespace ADP2.Models
 {
-    class FileLoaderModel : IFileLoaderModel
+    class FileLoaderModel
     {
+        /*MediaPlayerModel mpModel;
         //private string fileName;
         private int counter = 0;
         volatile Boolean isPaused = false;
-
+        volatile Boolean isPlay = true;
+        
         public void open(string filename)
         {
             using (StreamReader file = new StreamReader(filename))
@@ -70,5 +72,7 @@ namespace ADP2.Models
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+    }*/
     }
 }
+

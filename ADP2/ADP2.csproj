@@ -62,6 +62,7 @@
     <Compile Include="Models\Interface\ISlidersModel.cs" />
     <Compile Include="Models\MediaPlayerModel.cs" />
     <Compile Include="Models\SlidersModel.cs" />
+    <Compile Include="Models\UserGUI.cs" />
     <Compile Include="Models\VirtualJoystickEventArgs.cs" />
     <Compile Include="ViewModel\BaseNotify.cs" />
     <Compile Include="ViewModel\DashBoardViewModel.cs" />

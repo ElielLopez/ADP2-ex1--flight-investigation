@@ -23,6 +23,8 @@ namespace ADP2.Views
     public partial class mediaPlayer : UserControl
     {
         MediaPlayerViewModel vm;
+/*        volatile Boolean isPlayPressed = true;
+        volatile Boolean isPausePressed = false;*/
         public mediaPlayer()
         {
             InitializeComponent();
@@ -32,12 +34,17 @@ namespace ADP2.Views
 
         private void isPlay(object sender, RoutedEventArgs e)
         {
-            this.vm.StartPlay();
+/*            isPlayPressed = true;
+            isPausePressed = false;*/
+            this.vm.VM_Play = true;
         }
 
         private void isPause(object sender, RoutedEventArgs e)
         {
-            this.vm.StopPlay();
+/*            isPlayPressed = false;
+            isPausePressed = true;*/
+            //this.vm.StopPlay(isPausePressed);
+            vm.VM_Pause = true;
         }
     }
 }
