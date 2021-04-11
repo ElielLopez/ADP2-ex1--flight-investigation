@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="ADP2.Views.Sliders"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ADP2.Views"
+             mc:Ignorable="d" 
+              d:DesignHeight="450" Background="FloralWhite" Width="459">
+    <Grid Margin="0,0,279,0">
+
+        <Slider x:Name="Throttle" Orientation="Vertical" HorizontalContentAlignment="Left" Background="DimGray" Foreground="Black" Value="{Binding VM_Throttle}"  Maximum="1" Minimum="-1" TickFrequency="0.05" TickPlacement="BottomRight"
+                HorizontalAlignment="Left" VerticalAlignment="Center" Width="41" Margin="418,-1,-279,0" IsSnapToTickEnabled="False" Height="451"/>
+        <Slider x:Name="Rudder" Background="DimGray" Foreground="Black" Value="{Binding VM_Rudder}" Maximum="1" Minimum="-1" TickFrequency="0.05" TickPlacement="BottomRight"
+                HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,416,-238,0" Width="418" IsSnapToTickEnabled="False" Height="34"/>
+
+        <TextBlock FontFamily="Arial Black" FontSize="14" Foreground="Black" Margin ="393,256,-284,164">
+  Throttle
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90.000000000000014"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+
+        <TextBlock FontFamily="Arial Black" FontSize="14" Foreground="Black" Margin ="189,393,-95,24">
+  Rudder
+            <TextBlock.RenderTransform>
+                <RotateTransform Angle="0" />
+            </TextBlock.RenderTransform>
+        </TextBlock>
+
+        <TextBlock FontFamily="Arial Black" FontSize="14" Foreground="Black" Margin ="20,239,88,176">
+  Elevator
+            <TextBlock.RenderTransform>
+                <RotateTransform Angle="270" />
+            </TextBlock.RenderTransform>
+        </TextBlock>
+
+        <TextBlock FontFamily="Arial Black" FontSize="14" Foreground="Black" Margin ="179,20,-77,407">
+  Aileron
+            <TextBlock.RenderTransform>
+                <RotateTransform Angle="0" />
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <local:Joystick HorizontalAlignment="Left" Height="100" Margin="40,43,0,0" VerticalAlignment="Top" Width="100"/>
+    </Grid>
+
+
+</UserControl>

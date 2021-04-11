@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="ADP2.Views.FileLoader"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ADP2.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="90" Width="496.667">
+    <Grid Background="DimGray" Grid.Row="2">
+        <Button x:Name="openFileButton" Content="Open File" HorizontalAlignment="Left" VerticalAlignment="Top" Width="79" Height="27" Margin="10,10,0,0" Click="OpenFile_Click"/>
+        <TextBox x:Name="fileNameTextBox" HorizontalAlignment="Left" Height="27" Margin="111,10,0,0" TextWrapping="Wrap" Text="{Binding Path=choosenFileName}" VerticalAlignment="Top" Width="200"/>
+        <Button Content="Open XML" Click="OpenXMLFile_Click" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top" Width="79" Height="26"/>
+        <TextBox x:Name="xmlFileNAmeTextBox" HorizontalAlignment="Left" Height="26" Margin="111,56,0,0" TextWrapping="Wrap" Text="{Binding Path=choosenXMLFileName}" VerticalAlignment="Top" Width="200"/>
+
+    </Grid>
+</UserControl>

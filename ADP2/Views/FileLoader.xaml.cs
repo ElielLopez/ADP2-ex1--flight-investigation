@@ -12,37 +12,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Microsoft.Win32;
 using System.IO;
+using Microsoft.Win32;
 using System.Net.Sockets;
 using System.Threading;
 
-namespace ADP2
+namespace ADP2.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for FileLoader.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class FileLoader : UserControl
     {
-        public MainWindow()
+        public FileLoader()
         {
             InitializeComponent();
         }
 
-        int sleepTime = 100;
         int counter = 0;
         //int lineNumber = 0;
         double value = 0;
-        bool play = true;
-        bool pause = false;
-
-        public double Value
-        {
-            get { return value; }
-            set { }
-        }
-
-        /*private void OpenFile_Click(object sender, RoutedEventArgs e)
+        private void OpenFile_Click(object sender, RoutedEventArgs e)
         {
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -81,7 +71,7 @@ namespace ADP2
             {
                 TcpClient client = new TcpClient("127.0.0.1", 5400);
                 NetworkStream stream = client.GetStream();
-                var lines = File.ReadLines(fileNameTextBox.Text); 
+                var lines = File.ReadLines(fileNameTextBox.Text);
 
                 for (int i = 0; i < counter; i++, value++) // counter = 2147
                 {
@@ -92,7 +82,7 @@ namespace ADP2
                     Byte[] data = System.Text.Encoding.ASCII.GetBytes(currLine + "\r\n");
                     stream.Write(data, 0, data.Length);
                     Thread.Sleep(sleepTime);
-                    while(pause == true)
+                    while (pause == true)
                     {
                         Thread.Sleep(1000);
                         if (play == true)
@@ -107,57 +97,6 @@ namespace ADP2
             {
                 Console.WriteLine("error");
             }
-        }*/
-
-        private void OpenXMLFile_Click(object sender, RoutedEventArgs e)
-        {
-            string line;
-            int temp = 0;
-            StreamReader file = new StreamReader("playback_small.xml");
-            List<string> listOfNames = new List<string>();
-            List<string> listOfNamesFinal = new List<string>();
-            while ((line = file.ReadLine()) != null)
-            {
-                char[] seps = new char[] { '<', '>' };
-                string[] parts = line.Split(seps, StringSplitOptions.None);
-                for (int i = 0; i < parts.Length; i++)
-                {
-                    if (parts[i] == "name")
-                    {
-                        i++;
-                        temp++;
-                        listOfNames.Add(parts[i]);
-                    }
-                    if (parts[i] == "input")
-                        break;
-                }
-            }
-            file.Close();
-            for (int i = 0; i < temp / 2; i++)
-            {
-                listOfNamesFinal.Add(listOfNames[i]);
-                Console.WriteLine(listOfNamesFinal[i]);
-            }
-        }
-
-        private void DragSlider(object sender, RoutedEventArgs e)
-        {
-            var slider = sender as Slider;
-            value = slider.Value;
-            // ... Set Window Title.
-            this.Title = "Value: " + value.ToString("0.0") + "/" + slider.Maximum;
-        }
-        //Thumb.DragCompleted="DragSlider"
-
-        private void isPlay(object sender, RoutedEventArgs e)
-        {
-            play = true;
-            pause = false;
-        }
-        private void isPause(object sender, RoutedEventArgs e)
-        {
-            pause = true;
-            play = false;
         }
     }
 }

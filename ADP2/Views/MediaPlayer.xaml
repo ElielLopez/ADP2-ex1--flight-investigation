@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="ADP2.Views.mediaPlayer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ADP2.Views"
+             mc:Ignorable="d" d:DesignWidth="700" Height="170">
+    <Grid Background="DimGray" Margin="0,0,0,51">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26*"/>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="51*"/>
+        </Grid.RowDefinitions>
+
+        <Button Content="Play" Grid.Column="2" Click="isPlay" Margin="116,10,34.667,0" Grid.Row="1" Grid.ColumnSpan="2">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="75"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Content="Stop" Grid.Column="1"  Click="isPause" Grid.Row="1" Margin="116,10,36,0" Grid.ColumnSpan="2">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="75"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Content="Next" Grid.Column="5" Margin="0.333,10,29.333,0" Grid.Row="1">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="75"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Content="Farward" Grid.Column="4" Margin="0.333,10,31.667,0" Grid.Row="1">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="75"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Content="Backwards" Grid.Column="1"  RenderTransformOrigin="0.5,0.5" Margin="13,10,22,50" Grid.Row="1" Grid.RowSpan="2">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="75"/>
+                </Style>
+            </Button.Resources>
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="1.248"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+
+        <Button Content="Previous" Grid.Row="1" Margin="15,10,19,0">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="75"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Slider x:Name="timeSlider" Background="DimGray" Foreground="Black" Maximum="2174" Minimum="0" TickFrequency="10" TickPlacement="BottomRight" 
+                HorizontalAlignment="Left" VerticalAlignment="Center" Margin="1,0,0,19" Width="700" IsSnapToTickEnabled="False" Height="32" Grid.ColumnSpan="6"
+                    Value="{Binding Path=numOfLine}" ValueChanged="DragSlider" Grid.Row="2"/>
+
+        <Label Content="Play Speed" HorizontalAlignment="Left" VerticalAlignment="Top" Width="83" Height="26"/>
+        <TextBlock x:Name="playSpeedValue" Text="{Binding Path=speedReg}" Background="White" Grid.Column="1"/>
+        <TextBlock Text="00:00:00" Background="White" Grid.Column="2"/>
+
+
+        <!--ProgressBar x:Name="scrollBar" Value="{Binding VM_scrollBar}" Grid.ColumnSpan="2" Margin="31,25,49,0" Grid.Row="2"-->
+        
+    </Grid>
+</UserControl>
