@@ -26,9 +26,10 @@ namespace ADP2.Views
         public DashBoard()
         {
             InitializeComponent();
-            vm = new DashBoardViewModel(new DashBoardModel());
-            //vm.PropertyChanged += (sender, args) => { Vm_PropertyChanged(sender, args)};
+            //vm = new DashBoardViewModel(new DashBoardModel());
+          
             DataContext = vm;
         }
     }
 }
+//vm.PropertyChanged += (sender, args) => { Vm_PropertyChanged(sender, args)};

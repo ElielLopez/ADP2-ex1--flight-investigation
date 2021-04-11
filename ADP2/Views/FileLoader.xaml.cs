@@ -16,22 +16,26 @@ using System.IO;
 using Microsoft.Win32;
 using System.Net.Sockets;
 using System.Threading;
+using ADP2.ViewModel;
+using ADP2.Models;
 
 namespace ADP2.Views
 {
-    /// <summary>
-    /// Interaction logic for FileLoader.xaml
-    /// </summary>
     public partial class FileLoader : UserControl
     {
+        FileLoaderViewModel vm;
+        public string filename;
         public FileLoader()
         {
             InitializeComponent();
+            vm = new FileLoaderViewModel(new FileLoaderModel());
+            DataContext = vm;
         }
+/*        public string VM_FileName
+        {
+            get { return vm.filename; }
+        }*/
 
-        int counter = 0;
-        //int lineNumber = 0;
-        double value = 0;
         private void OpenFile_Click(object sender, RoutedEventArgs e)
         {
 
@@ -43,60 +47,58 @@ namespace ADP2.Views
             // Get the selected file name and display in a TextBox 
             if (result == true)
             {
-                string filename = openFileDialog.FileName;
+                filename = openFileDialog.FileName;
                 fileNameTextBox.Text = filename;
             }
-
-            using (StreamReader file = new StreamReader(fileNameTextBox.Text))
-            {
-                counter = 0;
-                string ln;
-
-                while ((ln = file.ReadLine()) != null)
-                {
-                    Console.WriteLine(ln);
-                    counter++;
-                }
-                file.Close();
-                Console.WriteLine("NUMBER OF LINES IS {0}", counter);
-            }
-
-
-            string[] arrText;
-            string currLine;
-
-            arrText = File.ReadAllLines(fileNameTextBox.Text);
-
-            try
-            {
-                TcpClient client = new TcpClient("127.0.0.1", 5400);
-                NetworkStream stream = client.GetStream();
-                var lines = File.ReadLines(fileNameTextBox.Text);
-
-                for (int i = 0; i < counter; i++, value++) // counter = 2147
-                {
-                    Console.WriteLine("the VALUE is {0}", value);
-                    //i = (int)value;
-                    i = (int)this.Value;
-                    currLine = arrText[i];
-                    Byte[] data = System.Text.Encoding.ASCII.GetBytes(currLine + "\r\n");
-                    stream.Write(data, 0, data.Length);
-                    Thread.Sleep(sleepTime);
-                    while (pause == true)
-                    {
-                        Thread.Sleep(1000);
-                        if (play == true)
-                            break;
-                    }
-                }
-
-                stream.Close();
-                client.Close();
-            }
-            catch (Exception _e)
-            {
-                Console.WriteLine("error");
-            }
+            vm.OpenCSVFile(filename);
         }
     }
 }
+
+
+
+
+/*{
+    using (StreamReader file = new StreamReader(fileNameTextBox.Text))
+    {
+        counter = 0;
+        string ln;
+
+        while ((ln = file.ReadLine()) != null)
+        {
+            Console.WriteLine(ln);
+            counter++;
+        }
+        file.Close();
+        Console.WriteLine("NUMBER OF LINES IS {0}", counter);
+    }
+
+
+    string[] arrText;
+    string currLine;
+
+    arrText = File.ReadAllLines(fileNameTextBox.Text);
+
+    try
+    {
+        TcpClient client = new TcpClient("127.0.0.1", 5400);
+        NetworkStream stream = client.GetStream();
+        var lines = File.ReadLines(fileNameTextBox.Text);
+
+        for (int i = 0; i < counter; i++, value++) // counter = 2147
+        {
+            Console.WriteLine("the VALUE is {0}", value);
+            currLine = arrText[i];
+            Byte[] data = System.Text.Encoding.ASCII.GetBytes(currLine + "\r\n");
+            stream.Write(data, 0, data.Length);
+            Thread.Sleep(100);
+        }
+
+        stream.Close();
+        client.Close();
+    }
+    catch (Exception _e)
+    {
+        Console.WriteLine("error");
+    }
+}*/

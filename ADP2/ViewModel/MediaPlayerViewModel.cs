@@ -82,5 +82,14 @@ namespace ADP2.ViewModel
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public void StartPlay()
+        {
+            this.model.start();
+        }
+        public void StopPlay()
+        {
+            this.model.stop();
+        }
     }
 }

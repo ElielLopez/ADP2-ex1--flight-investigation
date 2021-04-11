@@ -19,5 +19,9 @@ namespace ADP2.Models.Interface
 
         void moveVideoSlider();
         void setSpeed(float speedVal);
+
+        /*void isPlay();*/
+        void start();
+        void stop();
     }
 }

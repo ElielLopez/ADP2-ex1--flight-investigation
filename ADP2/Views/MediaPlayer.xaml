@@ -29,7 +29,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Content="Stop" Grid.Column="1"  Click="isPause" Grid.Row="1" Margin="116,10,36,0" Grid.ColumnSpan="2">
+        <Button Content="Pause" Grid.Column="1"  Click="isPause" Grid.Row="1" Margin="116,10,36,0" Grid.ColumnSpan="2">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="75"/>
@@ -79,7 +79,8 @@
 
         <Slider x:Name="timeSlider" Background="DimGray" Foreground="Black" Maximum="2174" Minimum="0" TickFrequency="10" TickPlacement="BottomRight" 
                 HorizontalAlignment="Left" VerticalAlignment="Center" Margin="1,0,0,19" Width="700" IsSnapToTickEnabled="False" Height="32" Grid.ColumnSpan="6"
-                    Value="{Binding Path=numOfLine}" ValueChanged="DragSlider" Grid.Row="2"/>
+                    Value="{Binding Path=numOfLine}" Grid.Row="2"/>
+        <!--ValueChanged="DragSlider"-->
 
         <Label Content="Play Speed" HorizontalAlignment="Left" VerticalAlignment="Top" Width="83" Height="26"/>
         <TextBlock x:Name="playSpeedValue" Text="{Binding Path=setSpeed}" Background="White" Grid.Column="1"/>

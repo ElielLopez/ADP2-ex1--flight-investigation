@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="Models\DashBoardModel.cs" />
     <Compile Include="Models\FileLoaderModel.cs" />
+    <Compile Include="Models\Interface\IFileLoaderModel.cs" />
     <Compile Include="Models\Interface\IMediaPlayerModel.cs" />
     <Compile Include="Models\Interface\ISlidersModel.cs" />
     <Compile Include="Models\MediaPlayerModel.cs" />

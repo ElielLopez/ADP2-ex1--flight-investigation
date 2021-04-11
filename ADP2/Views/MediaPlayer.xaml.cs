@@ -30,5 +30,14 @@ namespace ADP2.Views
             DataContext = vm;
         }
 
+        private void isPlay(object sender, RoutedEventArgs e)
+        {
+            this.vm.StartPlay();
+        }
+
+        private void isPause(object sender, RoutedEventArgs e)
+        {
+            this.vm.StopPlay();
+        }
     }
 }
