@@ -98,6 +98,14 @@ namespace ADP2.ViewModel
         {
             this.model.jumpB();
         }
+        public void SpeedUpVideo()
+        {
+            this.model.SpeedUp();
+        }
+        public void SpeedDownVideo()
+        {
+            this.model.SpeedDown();
+        }
 
         // FileLoaderViewModel
         public void OpenCSVFile(string filename)

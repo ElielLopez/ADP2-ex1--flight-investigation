@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.Sockets;
@@ -13,17 +14,21 @@ namespace ADP2.Models
 {
     class UserGUIModel : IUserGUI
     {
+        private int sleepTime;
         private int counter = 0;
         public Boolean isPaused;
         public Boolean isPlay;
         public int jumper;
         public bool defaultJumper;
+        public float speedValue;
         public UserGUIModel()
         {
+            sleepTime = 100;
             isPlay = true;
             isPaused = false;
             jumper = 0;
             defaultJumper = false;
+            speedValue = 1;
         }
 
         public void open(string filename)
@@ -70,10 +75,9 @@ namespace ADP2.Models
                             Console.Write(currLine);
                             while(isPaused)
                             {
-                                Thread.Sleep(100);
+                                Thread.Sleep(sleepTime);
                             }
-                            Thread.Sleep(100);
-                            //jumper -= jumper;
+                            Thread.Sleep((int)(sleepTime / speedValue));
                         }
 
                         stream.Close();
@@ -137,7 +141,18 @@ namespace ADP2.Models
                 INotifyPropertyChanged("Backward");
             }
         }
-        public float Speed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public float Speed
+        {
+            get
+            {
+                return speedValue;
+            }
+            set
+            {
+                speedValue = (int)value;
+                INotifyPropertyChanged("Speed");
+            }
+        }
         public float VideoTime { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public float VideoSlider { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
@@ -146,9 +161,13 @@ namespace ADP2.Models
             throw new NotImplementedException();
         }
 
-        public void setSpeed(float speedVal)
+        public void SpeedUp()
         {
-            throw new NotImplementedException();
+            speedValue += (float)0.1;
+        }
+        public void SpeedDown()
+        {
+            speedValue -= (float)0.1;
         }
 
         public void playVideo()

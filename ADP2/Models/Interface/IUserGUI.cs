@@ -17,16 +17,14 @@ namespace ADP2.Models.Interface
         float Speed { set; get; }
         float VideoTime { set; get; }
         float VideoSlider { set; get; }
-
         void moveVideoSlider();
-        void setSpeed(float speedVal);
+        void SpeedUp();
+        void SpeedDown();
         
         void playVideo();
         void stopVideo();
         void jumpF();
         void jumpB();
-
-
 
         // IFileLoaderModel
         void open(string fn);

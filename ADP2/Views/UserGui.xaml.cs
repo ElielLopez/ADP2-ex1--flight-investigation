@@ -52,18 +52,15 @@ namespace ADP2.Views
             vm.OpenCSVFile(filename);
         }
 
-
         // MediaPlayer View
         private void isPlay(object sender, RoutedEventArgs e)
         {
             vm.playVideo();
         }
-
         private void isPause(object sender, RoutedEventArgs e)
         {
             vm.pauseVideo();
         }
-
         private void jumpFarward(object sender, RoutedEventArgs e)
         {
             vm.jumpFarward();
@@ -72,5 +69,33 @@ namespace ADP2.Views
         {
             vm.jumpBackward();
         }
+/*        private void setVideoSpeed(object sender, RoutedEventArgs e)
+        {
+            string speed = playSpeedValue.Text;
+            vm.setSpeedVideo(speed);
+        }*/
+
+/*        private void setVideoSpeed(object sender, TextChangedEventArgs e)
+        {
+            string speed = playSpeedValue.Text;
+            vm.setSpeedVideo(speed);
+        }*/
+
+        private void SpeedUp_Click(object sender, RoutedEventArgs e)
+        {
+            vm.SpeedUpVideo();
+        }
+        private void SpeedDown_Click(object sender, RoutedEventArgs e)
+        {
+            vm.SpeedDownVideo();
+        }
+
+        /*        private void Enter_KeyDown(object sender, KeyEventArgs e)
+                {
+        *//*            if(e.KeyValue == 13)
+                    {
+
+                    }*//*
+                }*/
     }
 }
