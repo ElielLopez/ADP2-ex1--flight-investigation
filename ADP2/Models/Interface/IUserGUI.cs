@@ -25,6 +25,7 @@ namespace ADP2.Models.Interface
         void stopVideo();
         void jumpF();
         void jumpB();
+        void goToPoint(double timeValue);
 
         // IFileLoaderModel
         void open(string fn);

@@ -69,17 +69,6 @@ namespace ADP2.Views
         {
             vm.jumpBackward();
         }
-/*        private void setVideoSpeed(object sender, RoutedEventArgs e)
-        {
-            string speed = playSpeedValue.Text;
-            vm.setSpeedVideo(speed);
-        }*/
-
-/*        private void setVideoSpeed(object sender, TextChangedEventArgs e)
-        {
-            string speed = playSpeedValue.Text;
-            vm.setSpeedVideo(speed);
-        }*/
 
         private void SpeedUp_Click(object sender, RoutedEventArgs e)
         {
@@ -90,12 +79,10 @@ namespace ADP2.Views
             vm.SpeedDownVideo();
         }
 
-        /*        private void Enter_KeyDown(object sender, KeyEventArgs e)
-                {
-        *//*            if(e.KeyValue == 13)
-                    {
-
-                    }*//*
-                }*/
+        private void timeSlider_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
+        {
+            double timeValue = timeSlider.Value;
+            vm.goHere(timeValue);
+        }
     }
 }

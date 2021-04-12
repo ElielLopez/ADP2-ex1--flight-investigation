@@ -107,6 +107,11 @@ namespace ADP2.ViewModel
             this.model.SpeedDown();
         }
 
+        public void goHere(double timeValue)
+        {
+            this.model.goToPoint(timeValue);
+        }
+
         // FileLoaderViewModel
         public void OpenCSVFile(string filename)
         {

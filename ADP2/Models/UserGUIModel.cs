@@ -20,7 +20,9 @@ namespace ADP2.Models
         public Boolean isPlay;
         public int jumper;
         public bool defaultJumper;
+        public bool defaultTimePoint;
         public float speedValue;
+        public double timePoint;
         public UserGUIModel()
         {
             sleepTime = 100;
@@ -29,6 +31,7 @@ namespace ADP2.Models
             jumper = 0;
             defaultJumper = false;
             speedValue = 1;
+            timePoint = 0;
         }
 
         public void open(string filename)
@@ -68,6 +71,11 @@ namespace ADP2.Models
                             {
                                 i += jumper;
                                 defaultJumper = false;
+                            }
+                            if (defaultTimePoint)
+                            {
+                                i = (int)timePoint;
+                                defaultTimePoint = false;
                             }
                             currLine = arrText[i];
                             Byte[] data = System.Text.Encoding.ASCII.GetBytes(currLine + "\r\n");
@@ -192,6 +200,11 @@ namespace ADP2.Models
         {
             this.defaultJumper = true;
             this.jumper = -100;
+        }
+        public void goToPoint(double timeValue)
+        {
+            this.defaultTimePoint = true;
+            this.timePoint = timeValue;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
