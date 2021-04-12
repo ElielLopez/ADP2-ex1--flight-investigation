@@ -17,13 +17,13 @@ namespace ADP2.Models
         public Boolean isPaused;
         public Boolean isPlay;
         public int jumper;
-        public int defaultJumper;
+        public bool defaultJumper;
         public UserGUIModel()
         {
             isPlay = true;
             isPaused = false;
             jumper = 0;
-            defaultJumper = 0;
+            defaultJumper = false;
         }
 
         public void open(string filename)
@@ -59,7 +59,11 @@ namespace ADP2.Models
 
                         for (int i = 0; i < counter; i++) // counter = 2147
                         {
-                            i += jumper;
+                            if (defaultJumper)
+                            {
+                                i += jumper;
+                                defaultJumper = false;
+                            }
                             currLine = arrText[i];
                             Byte[] data = System.Text.Encoding.ASCII.GetBytes(currLine + "\r\n");
                             stream.Write(data, 0, data.Length);
@@ -159,13 +163,16 @@ namespace ADP2.Models
             this.isPaused = true;
         }
 
+        // 100 rows = 10 seconds
         public void jumpF()
         {
-            this.jumper += 100;
+            this.defaultJumper = true;
+            this.jumper = 100;
         }
         public void jumpB()
         {
-            this.jumper -= 100;
+            this.defaultJumper = true;
+            this.jumper = -100;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
