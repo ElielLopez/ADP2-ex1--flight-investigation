@@ -37,7 +37,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Content="Next" Grid.Column="5" Margin="0.333,10,29.333,0" Grid.Row="1">
+        <Button Content="Farward" Grid.Column="4" Margin="0.333,10,31.667,0" Grid.Row="1" Click="jumpFarward" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="75"/>
@@ -45,15 +45,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Content="Farward" Grid.Column="4" Margin="0.333,10,31.667,0" Grid.Row="1">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="75"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-
-        <Button Content="Backwards" Grid.Column="1"  RenderTransformOrigin="0.5,0.5" Margin="13,10,22,50" Grid.Row="1" Grid.RowSpan="2">
+        <Button Content="Backwards" Grid.Column="1"  RenderTransformOrigin="0.5,0.5" Margin="13,10,22,50" Grid.Row="1" Grid.RowSpan="2" Click="jumpBackward">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="75"/>
@@ -67,14 +59,6 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Button.RenderTransform>
-        </Button>
-
-        <Button Content="Previous" Grid.Row="1" Margin="15,10,19,0">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="75"/>
-                </Style>
-            </Button.Resources>
         </Button>
 
         <Slider x:Name="timeSlider" Background="DimGray" Foreground="Black" Maximum="2174" Minimum="0" TickFrequency="10" TickPlacement="BottomRight" 

@@ -23,6 +23,9 @@ namespace ADP2.Models.Interface
         
         void playVideo();
         void stopVideo();
+        void jumpF();
+        void jumpB();
+
 
 
         // IFileLoaderModel

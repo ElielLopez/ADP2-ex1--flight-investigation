@@ -14,7 +14,7 @@ namespace ADP2.ViewModel
         private IUserGUI model;
 
         private float speedVal;
-        Boolean isPlayPressed = true;
+        //Boolean isPlayPressed = true;
         //volatile Boolean isPausePressed = false;
         public UserGUIViewModel(IUserGUI model)
         {
@@ -31,11 +31,6 @@ namespace ADP2.ViewModel
             {
                 return model.Play;
             }
-/*            set
-            {
-                //isPlayPressed = value;
-                model.playVideo();
-            }*/
         }
         public bool VM_Pause
         {
@@ -43,11 +38,6 @@ namespace ADP2.ViewModel
             {
                 return model.Pause;
             }
-/*            set
-            {
-                //isPausePressed = value;
-                model.stopVideo();
-            }*/
         }
 
         public float VM_Forward
@@ -90,6 +80,7 @@ namespace ADP2.ViewModel
             }
         }
 
+
         public void pauseVideo()
         {
             this.model.stopVideo();
@@ -97,6 +88,15 @@ namespace ADP2.ViewModel
         public void playVideo()
         {
             this.model.playVideo();
+        }
+
+        public void jumpFarward()
+        {
+            this.model.jumpF();
+        }
+        public void jumpBackward()
+        {
+            this.model.jumpB();
         }
 
         // FileLoaderViewModel
