@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace ADP2.Models.Interface
 {
-    interface IMediaPlayerModel : INotifyPropertyChanged
+    interface IUserGUI : INotifyPropertyChanged
     {
+        /*IMediaPlayerModel;*/
         bool Play { set; get; }
         bool Pause { set; get; }
         float Forward { set; get; }
@@ -19,9 +20,12 @@ namespace ADP2.Models.Interface
 
         void moveVideoSlider();
         void setSpeed(float speedVal);
-
-        /*void isPlay();*/
+        
         void start();
         void stop();
+
+
+        // IFileLoaderModel
+        void open(string fn);
     }
 }

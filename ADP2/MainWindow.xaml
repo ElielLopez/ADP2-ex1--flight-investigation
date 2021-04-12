@@ -8,6 +8,7 @@
         mc:Ignorable="d" 
         Title="MainWindow" Height="650" Width="1000">
     <Grid Background="DimGray">
-        <Views:FileLoader/>
+        
+        <Views:UserGui Margin="180,112,248,337"/>
     </Grid>
 </Window>

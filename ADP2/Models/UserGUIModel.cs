@@ -11,14 +11,20 @@ using System.Threading.Tasks;
 
 namespace ADP2.Models
 {
-    class UserGUI : IMediaPlayerModel, IFileLoaderModel
+    class UserGUIModel : IUserGUI
     {
-
-        MediaPlayerModel mpModel;
-        //private string fileName;
         private int counter = 0;
-        volatile Boolean isPaused = false;
-        volatile Boolean isPlay = true;
+        volatile Boolean isPaused;
+        volatile Boolean isPlay;
+        public UserGUIModel()
+        {
+            isPlay = true;
+            isPaused = false;
+        }
+
+        //UserGUI mpModel;
+        //private string fileName;
+
 
         public void open(string filename)
         {
@@ -69,23 +75,17 @@ namespace ADP2.Models
                     }
                 }
             }).Start();
-
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-
         // MediaPLayerModel
-
-    public bool play;
-        public bool pause;
-
 
         public bool Play
         {
             get
             {
-                return play;
+                return isPlay;
             }
             set => throw new NotImplementedException();
         }
@@ -93,7 +93,7 @@ namespace ADP2.Models
         {
             get
             {
-                return pause;
+                return isPaused;
             }
             set
             {
@@ -105,7 +105,6 @@ namespace ADP2.Models
         public float Speed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public float VideoTime { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public float VideoSlider { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
 
         public void moveVideoSlider()
         {
@@ -120,14 +119,14 @@ namespace ADP2.Models
 
         public void start()
         {
-            this.play = true;
-            this.pause = false;
+            this.isPlay = true;
+            this.isPaused = false;
         }
 
         public void stop()
         {
-            this.play = false;
-            this.pause = true;
+            this.isPlay = false;
+            this.isPaused = true;
         }
     }
 }

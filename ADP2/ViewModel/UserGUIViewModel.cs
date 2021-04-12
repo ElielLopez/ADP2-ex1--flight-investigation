@@ -1,4 +1,5 @@
-﻿using ADP2.Models.Interface;
+﻿using ADP2.Models;
+using ADP2.Models.Interface;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,13 +9,15 @@ using System.Threading.Tasks;
 
 namespace ADP2.ViewModel
 {
-    class MediaPlayerViewModel : INotifyPropertyChanged
+    class UserGUIViewModel : INotifyPropertyChanged
     {
-        private IMediaPlayerModel model;
+        private IUserGUI model;
+        public UserGUIModel uModel;
+
         private float speedVal;
         volatile Boolean isPlayPressed = true;
         volatile Boolean isPausePressed = false;
-        public MediaPlayerViewModel(IMediaPlayerModel model)
+        public UserGUIViewModel(IUserGUI model)
         {
             this.model = model;
             model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
@@ -87,6 +90,17 @@ namespace ADP2.ViewModel
                 return model.VideoSlider;
             }
         }
+        public void pauseVideo(Boolean pauseV)
+        {
+            uModel.stop();
+        }
+
+        // FileLoaderViewModel
+        public void OpenCSVFile(string filename)
+        {
+            this.model.open(filename);
+        }
+
 
         private void NotifyPropertyChanged(string v)
         {
@@ -94,14 +108,5 @@ namespace ADP2.ViewModel
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-/*        public void StartPlay()
-        {
-            this.model.start();
-        }
-        public void StopPlay(Boolean paused)
-        {
-            this.model.stop();
-        }*/
     }
 }
