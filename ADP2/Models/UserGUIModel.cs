@@ -14,17 +14,13 @@ namespace ADP2.Models
     class UserGUIModel : IUserGUI
     {
         private int counter = 0;
-        volatile Boolean isPaused;
-        volatile Boolean isPlay;
+        public Boolean isPaused;
+        public Boolean isPlay;
         public UserGUIModel()
         {
             isPlay = true;
             isPaused = false;
         }
-
-        //UserGUI mpModel;
-        //private string fileName;
-
 
         public void open(string filename)
         {
@@ -41,15 +37,28 @@ namespace ADP2.Models
                 file.Close();
                 Console.WriteLine("NUMBER OF LINES IS {0}", counter);
             }
+            /*            string[] arrText;
+                        string currLine;
+
+                        arrText = File.ReadAllLines(filename);*/
+
+
+            /*            var t = new Thread(() => RealStart(filename, this.isPaused, counter));
+                        t.Start();*/
+
+            /*            Thread thread = new Thread(() => RealStart(filename, this.isPaused, counter));
+                        thread.Start();*/
+
             string[] arrText;
             string currLine;
 
             arrText = File.ReadAllLines(filename);
-
             new Thread(delegate ()
             {
-                while (!isPaused)
+                
+                while (true)
                 {
+                    //isPaused = Pause;
                     try
                     {
                         TcpClient client = new TcpClient("127.0.0.1", 5400);
@@ -58,11 +67,15 @@ namespace ADP2.Models
 
                         for (int i = 0; i < counter; i++) // counter = 2147
                         {
-                            //Console.WriteLine("the VALUE is {0}", value);
+                            
                             currLine = arrText[i];
                             Byte[] data = System.Text.Encoding.ASCII.GetBytes(currLine + "\r\n");
                             stream.Write(data, 0, data.Length);
-                            Console.Write(currLine); // CHECKING
+                            Console.Write(currLine);
+                            while(isPaused)
+                            {
+                                Thread.Sleep(100);
+                            }
                             Thread.Sleep(100);
                         }
 
@@ -77,8 +90,6 @@ namespace ADP2.Models
             }).Start();
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
         // MediaPLayerModel
 
         public bool Play
@@ -87,7 +98,11 @@ namespace ADP2.Models
             {
                 return isPlay;
             }
-            set => throw new NotImplementedException();
+            set
+            {
+                isPlay = value;
+                INotifyPropertyChanged("Play");
+            }
         }
         public bool Pause
         {
@@ -97,7 +112,8 @@ namespace ADP2.Models
             }
             set
             {
-                //this.pause = 
+                isPaused = value;
+                INotifyPropertyChanged("Pause");
             }
         }
         public float Forward { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -117,16 +133,59 @@ namespace ADP2.Models
             throw new NotImplementedException();
         }
 
-        public void start()
+        public void playVideo()
         {
             this.isPlay = true;
             this.isPaused = false;
         }
 
-        public void stop()
+        public void stopVideo()
         {
             this.isPlay = false;
             this.isPaused = true;
+        }
+
+/*        public static void RealStart(string filename, Boolean isPaused, int counter)
+        {
+            string[] arrText;
+            string currLine;
+
+            arrText = File.ReadAllLines(filename);
+            while (!isPaused)
+            {
+                try
+                {
+                    TcpClient client = new TcpClient("127.0.0.1", 5400);
+                    NetworkStream stream = client.GetStream();
+                    var lines = File.ReadLines(filename);
+
+                    for (int i = 0; i < counter; i++) // counter = 2147
+                    {
+                        //Console.WriteLine("the VALUE is {0}", value);
+                        currLine = arrText[i];
+                        Byte[] data = System.Text.Encoding.ASCII.GetBytes(currLine + "\r\n");
+                        stream.Write(data, 0, data.Length);
+                        Console.Write(currLine); // CHECKING
+                        Thread.Sleep(100);
+                    }
+
+                    stream.Close();
+                    client.Close();
+                }
+                catch (Exception _e)
+                {
+                    Console.WriteLine("error");
+                }
+            }
+        }*/
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void INotifyPropertyChanged(string propName)
+        {
+            if (this.PropertyChanged != null)
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+            }
         }
     }
 }

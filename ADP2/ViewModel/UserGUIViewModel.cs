@@ -12,11 +12,10 @@ namespace ADP2.ViewModel
     class UserGUIViewModel : INotifyPropertyChanged
     {
         private IUserGUI model;
-        public UserGUIModel uModel;
 
         private float speedVal;
-        volatile Boolean isPlayPressed = true;
-        volatile Boolean isPausePressed = false;
+        Boolean isPlayPressed = true;
+        //volatile Boolean isPausePressed = false;
         public UserGUIViewModel(IUserGUI model)
         {
             this.model = model;
@@ -32,11 +31,11 @@ namespace ADP2.ViewModel
             {
                 return model.Play;
             }
-            set
+/*            set
             {
-                isPlayPressed = value;
-                model.start();
-            }
+                //isPlayPressed = value;
+                model.playVideo();
+            }*/
         }
         public bool VM_Pause
         {
@@ -44,11 +43,11 @@ namespace ADP2.ViewModel
             {
                 return model.Pause;
             }
-            set
+/*            set
             {
-                isPausePressed = value;
-                model.stop();
-            }
+                //isPausePressed = value;
+                model.stopVideo();
+            }*/
         }
 
         public float VM_Forward
@@ -90,9 +89,14 @@ namespace ADP2.ViewModel
                 return model.VideoSlider;
             }
         }
-        public void pauseVideo(Boolean pauseV)
+
+        public void pauseVideo()
         {
-            uModel.stop();
+            this.model.stopVideo();
+        }
+        public void playVideo()
+        {
+            this.model.playVideo();
         }
 
         // FileLoaderViewModel

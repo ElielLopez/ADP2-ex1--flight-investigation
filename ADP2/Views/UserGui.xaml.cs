@@ -23,8 +23,8 @@ namespace ADP2.Views
     /// </summary>
     public partial class UserGui : UserControl
     {
-        Boolean isPlayPressed = true;
-        Boolean isPausePressed = false;
+/*        Boolean isPlayPressed = true;
+        Boolean isPausePressed = false;*/
         UserGUIViewModel vm;
 
         public string filename;
@@ -58,15 +58,19 @@ namespace ADP2.Views
         // MediaPlayer View
         private void isPlay(object sender, RoutedEventArgs e)
         {
-            this.vm.VM_Play = true;
+            //this.vm.VM_Play = true;
+            /*          isPlayPressed = true;
+                      isPausePressed = false;*/
+            vm.playVideo();
         }
 
         private void isPause(object sender, RoutedEventArgs e)
         {
             //this.vm.StopPlay(isPausePressed);
-            vm.VM_Pause = true;
-            isPausePressed = true;
-            vm.pauseVideo(isPausePressed);
+            //vm.VM_Pause = true;
+/*            isPausePressed = true;
+            isPlayPressed = false;*/
+            vm.pauseVideo();
         }
     }
 }

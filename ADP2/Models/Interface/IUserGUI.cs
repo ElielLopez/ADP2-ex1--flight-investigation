@@ -10,8 +10,8 @@ namespace ADP2.Models.Interface
     interface IUserGUI : INotifyPropertyChanged
     {
         /*IMediaPlayerModel;*/
-        bool Play { set; get; }
-        bool Pause { set; get; }
+        bool Play {get; }
+        bool Pause {get; }
         float Forward { set; get; }
         float Backward { set; get; }
         float Speed { set; get; }
@@ -21,8 +21,8 @@ namespace ADP2.Models.Interface
         void moveVideoSlider();
         void setSpeed(float speedVal);
         
-        void start();
-        void stop();
+        void playVideo();
+        void stopVideo();
 
 
         // IFileLoaderModel
