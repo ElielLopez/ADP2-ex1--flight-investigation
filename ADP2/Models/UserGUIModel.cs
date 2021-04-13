@@ -22,7 +22,8 @@ namespace ADP2.Models
         public bool defaultJumper;
         public bool defaultTimePoint;
         public float speedValue;
-        public double timePoint;
+        public double videoSlider;
+        private int lineNum;
         public UserGUIModel()
         {
             sleepTime = 100;
@@ -31,7 +32,7 @@ namespace ADP2.Models
             jumper = 0;
             defaultJumper = false;
             speedValue = 1;
-            timePoint = 0;
+            videoSlider = 0;
         }
 
         public void open(string filename)
@@ -52,7 +53,7 @@ namespace ADP2.Models
 
             string[] arrText;
             string currLine;
-
+            char[] delimeters = new char[] { ',' };
             arrText = File.ReadAllLines(filename);
             new Thread(delegate ()
             {
@@ -74,10 +75,16 @@ namespace ADP2.Models
                             }
                             if (defaultTimePoint)
                             {
-                                i = (int)timePoint;
+                                i = (int)videoSlider;
                                 defaultTimePoint = false;
                             }
+                           
+                            // in line i i want to take the value of column "aileron" and send it to XAML
                             currLine = arrText[i];
+                            
+                            string[] vals = arrText[i].Split(delimeters, StringSplitOptions.None);
+                            Console.WriteLine(vals[1]);
+
                             Byte[] data = System.Text.Encoding.ASCII.GetBytes(currLine + "\r\n");
                             stream.Write(data, 0, data.Length);
                             Console.Write(currLine);
@@ -110,7 +117,7 @@ namespace ADP2.Models
             set
             {
                 isPlay = value;
-                INotifyPropertyChanged("Play");
+                NotifyPropertyChanged("Play");
             }
         }
         public bool Pause
@@ -122,7 +129,7 @@ namespace ADP2.Models
             set
             {
                 isPaused = value;
-                INotifyPropertyChanged("Pause");
+                NotifyPropertyChanged("Pause");
             }
         }
         public float Forward 
@@ -134,7 +141,7 @@ namespace ADP2.Models
             set
             {
                 jumper += (int)value;
-                INotifyPropertyChanged("Forward");
+                NotifyPropertyChanged("Forward");
             }
         }
         public float Backward 
@@ -146,7 +153,7 @@ namespace ADP2.Models
             set
             {
                 jumper -= (int)value;
-                INotifyPropertyChanged("Backward");
+                NotifyPropertyChanged("Backward");
             }
         }
         public float Speed
@@ -158,11 +165,22 @@ namespace ADP2.Models
             set
             {
                 speedValue = (int)value;
-                INotifyPropertyChanged("Speed");
+                NotifyPropertyChanged("Speed");
             }
         }
         public float VideoTime { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public float VideoSlider { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public double VideoSlider
+        {
+            get
+            {
+                return videoSlider;
+            }
+            set
+            {
+                videoSlider = value;
+                NotifyPropertyChanged("VideoSlider");
+            }
+        }
 
         public void moveVideoSlider()
         {
@@ -204,16 +222,17 @@ namespace ADP2.Models
         public void goToPoint(double timeValue)
         {
             this.defaultTimePoint = true;
-            this.timePoint = timeValue;
+            this.videoSlider = timeValue;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        private void INotifyPropertyChanged(string propName)
+        private void NotifyPropertyChanged(string propName)
         {
             if (this.PropertyChanged != null)
             {
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
         }
+
     }
 }

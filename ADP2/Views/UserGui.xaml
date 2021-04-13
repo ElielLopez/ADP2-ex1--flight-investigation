@@ -62,8 +62,10 @@
 
         <Slider x:Name="timeSlider" Background="DimGray" Foreground="Black" Maximum="2174" Minimum="0" TickFrequency="10" TickPlacement="BottomRight" 
                 HorizontalAlignment="Left" VerticalAlignment="Center" Margin="1,10,0,9" Width="621" IsSnapToTickEnabled="False" Height="32" Grid.ColumnSpan="5"
-                    Value="{Binding Path=numOfLine}" Grid.Row="2" Thumb.DragCompleted="timeSlider_DragCompleted"/>
+                    Value="{Binding VM_lineNumber, Mode=TwoWay}" Grid.Row="2" Thumb.DragCompleted="timeSlider_DragCompleted"/>
+        
         <!--ValueChanged="DragSlider   , StringFormat=0.00"-->
+        
         <TextBlock Text="00:00:00" Background="White" Grid.Column="3" Margin="116,0,0,0" Grid.ColumnSpan="2"/>
 
         <Button x:Name="openFileButton" Content="Open File" HorizontalAlignment="Left" VerticalAlignment="Top" Width="116" Height="27" Margin="1,0,0,0" Click="OpenFile_Click" Grid.RowSpan="2"/>

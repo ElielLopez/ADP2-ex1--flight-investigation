@@ -8,7 +8,7 @@
         mc:Ignorable="d" 
         Title="MainWindow" Height="650" Width="1000">
     <Grid Background="DimGray">
-        
-        <Views:UserGui Margin="180,112,248,337"/>
+        <Views:DashBoard Margin="180,138,-180,-138"/>
+        <Views:UserGui Margin="10,10,418,439"/>
     </Grid>
 </Window>

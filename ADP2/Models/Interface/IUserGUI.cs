@@ -16,7 +16,7 @@ namespace ADP2.Models.Interface
         float Backward { set; get; }
         float Speed { set; get; }
         float VideoTime { set; get; }
-        float VideoSlider { set; get; }
+        double VideoSlider { set; get; }
         void moveVideoSlider();
         void SpeedUp();
         void SpeedDown();
@@ -26,6 +26,16 @@ namespace ADP2.Models.Interface
         void jumpF();
         void jumpB();
         void goToPoint(double timeValue);
+/*        int lineNumber
+        {
+            get;
+            set;
+        }*/
+/*        int simLen
+        {
+            get;
+            set;
+        }*/
 
         // IFileLoaderModel
         void open(string fn);

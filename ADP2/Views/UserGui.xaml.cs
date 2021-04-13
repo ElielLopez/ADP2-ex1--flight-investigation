@@ -3,8 +3,10 @@ using ADP2.ViewModel;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -31,6 +33,7 @@ namespace ADP2.Views
         {
             InitializeComponent();
             vm = new UserGUIViewModel(new UserGUIModel());
+            //vm.PropertyChanged += (sender, args) => { Vm_PropertyChanged(sender, args); };
             DataContext = vm;
         }
 
@@ -84,5 +87,13 @@ namespace ADP2.Views
             double timeValue = timeSlider.Value;
             vm.goHere(timeValue);
         }
+
+/*        private void Vm_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName.Equals("VM_VideoSlider") || e.PropertyName.Equals("VM_lineNumber"))
+            {
+                vm.VideoSliderChanged = timeSlider.Value;
+            }
+        }*/
     }
 }

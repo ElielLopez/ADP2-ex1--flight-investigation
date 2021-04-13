@@ -1,5 +1,6 @@
 ﻿using ADP2.Models;
 using ADP2.ViewModel;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,9 +27,29 @@ namespace ADP2.Views
         public DashBoard()
         {
             InitializeComponent();
-            //vm = new DashBoardViewModel(new DashBoardModel());
-          
+            vm = new DashBoardViewModel(new DashBoardModel());
             DataContext = vm;
+        }
+
+        private void OpenXMLFile_Click(object sender, RoutedEventArgs e)
+        {
+            string filename = "";
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
+
+            Nullable<bool> result = openFileDialog.ShowDialog();
+
+            // Get the selected file name and display in a TextBox 
+            if (result == true)
+            {
+                 filename = openFileDialog.FileName;
+                xmlFileNAmeTextBox.Text = filename;
+            }
+            vm.OpenXMLFile(filename);
+        }
+        public void setValueAirSpeed()
+        {
+            AirSpeedVal.Content =  vm.setAirSpeed().ToString();
         }
     }
 }

@@ -21,7 +21,7 @@ namespace ADP2.ViewModel
             this.model = model;
             model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
             {
-                NotifyPropertyChanged("VM_" + e.PropertyName);
+                onPropertyChanged("VM_" + e.PropertyName);
             };
         }
 
@@ -72,15 +72,14 @@ namespace ADP2.ViewModel
                 return model.VideoTime;
             }
         }
-        public float VM_VideoSlider
+        public double VideoSliderChanged
         {
-            get
+            set
             {
-                return model.VideoSlider;
+                this.model.VideoSlider = value;
             }
+
         }
-
-
         public void pauseVideo()
         {
             this.model.stopVideo();
@@ -119,11 +118,22 @@ namespace ADP2.ViewModel
         }
 
 
+
         private void NotifyPropertyChanged(string v)
         {
-            throw new NotImplementedException();
+            if (this.PropertyChanged != null)
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(v));
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+        public void onPropertyChanged(string propName)
+        {
+            if (PropertyChanged != null)
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+            }
+        }
     }
 }
