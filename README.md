@@ -21,11 +21,11 @@
 5. Speed Up - speed up playback video by 0.1.
 6. Speed Down - speed down playback video by 0.1.
 
-7. JoyStick - according to the Elevator and Aileron values the joystick will update its location.
-8. Dashboard - display of the values such as Air Speed and Pitch roll degree.
-9. Throttle - the slider will move according the throttle values between -1 and 1.
-10. Rudder - the slider will move according the rudder values between -1 and 1.
-11. Time - will display the current time of the video (time from start).
+- JoyStick - according to the Elevator and Aileron values the joystick will update its location.
+- Dashboard - display of the values such as Air Speed and Pitch roll degree.
+- Throttle - the slider will move according the throttle values between -1 and 1.
+- Rudder - the slider will move according the rudder values between -1 and 1.
+- Time - will display the current time of the video (time from start).
 
 
 ### Notes
