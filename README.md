@@ -2,7 +2,7 @@
 ## Desktop application for flight data review
 
 
-##### Instructions
+#### Instructions
 1. open Flight Gear application.
 2. Go to Settings -> Additional Settings
 3. enter command: 
