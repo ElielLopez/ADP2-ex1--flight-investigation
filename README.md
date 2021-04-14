@@ -13,7 +13,7 @@
 * Click Open File and choose the correct CSV file you want to upload.
 * The flight will begin immidiatlly.
 
-#### Usage
+#### Media Player
 1. Play - continue playing video.
 2. Pause - stop playing video.
 3. Farward - skip 10 second farward.
@@ -21,6 +21,7 @@
 5. Speed Up - speed up playback video by 0.1.
 6. Speed Down - speed down playback video by 0.1.
 
+#### Features
 - JoyStick - according to the Elevator and Aileron values the joystick will update its location.
 - Dashboard - display of the values such as Air Speed and Pitch roll degree.
 - Throttle - the slider will move according the throttle values between -1 and 1.
