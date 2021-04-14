@@ -14,16 +14,16 @@
 * The flight will begin immidiatlly
 
 ##### Usage
-Play - continue playing video
-Pause - stop playing video
-Farward - skip 10 second farward
-Backward - go back 10 second farward
-Speed Up - speed up playback video by 0.1
-Speed Down - speed down playback video by 0.1
+*Play - continue playing video
+*Pause - stop playing video
+*Farward - skip 10 second farward
+*Backward - go back 10 second farward
+*Speed Up - speed up playback video by 0.1
+*Speed Down - speed down playback video by 0.1
 
-JoyStick - according to the Elevator and Aileron values the joystick will update its location.
-Dashboard - display of the values such as Air Speed and Pitch roll degree.
-Throttle - the slider will move according the throttle values between -1 and 1.
-Rudder - the slider will move according the rudder values between -1 and 1.
-Time - will display the current time of the video (time from start).
+*JoyStick - according to the Elevator and Aileron values the joystick will update its location.
+*Dashboard - display of the values such as Air Speed and Pitch roll degree.
+*Throttle - the slider will move according the throttle values between -1 and 1.
+*Rudder - the slider will move according the rudder values between -1 and 1.
+*Time - will display the current time of the video (time from start).
 
