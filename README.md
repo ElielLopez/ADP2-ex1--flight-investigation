@@ -28,6 +28,8 @@
 - Rudder - the slider will move according the rudder values between -1 and 1.
 - Time - will display the current time of the video (time from start).
 
+![UML Image](![ADP2 EX1 (1)](https://user-images.githubusercontent.com/58383829/114744372-4aa4e180-9d56-11eb-852f-245b69edcbb9.png)
+
 
 ### Notes
 
