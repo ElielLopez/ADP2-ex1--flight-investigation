@@ -29,7 +29,7 @@
 - Time - will display the current time of the video (time from start).
 
 #### UML Diagram
-![ADP2 EX1 (1)](https://user-images.githubusercontent.com/58383829/114744372-4aa4e180-9d56-11eb-852f-245b69edcbb9.png)
+![WhatsApp Image 2021-04-14 at 19 34 25](https://user-images.githubusercontent.com/58383829/114746823-d0299100-9d58-11eb-8c9a-00a5b1860508.jpeg)
 
 ### Notes
 WPF .net Frakework project.
