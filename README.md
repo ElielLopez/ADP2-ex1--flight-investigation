@@ -6,8 +6,8 @@
 1. open Flight Gear application.
 2. Go to Settings -> Additional Settings
 3. enter command: 
---generic=socket,in,10,127.0.0.1,5400,tcp,playback_small
---fdm=null
+  * --generic=socket,in,10,127.0.0.1,5400,tcp,playback_small
+  * --fdm=null
 4. Fly!
 5. Click on Open XML and choose the correct xml file you want to upload.
 6. Click Open File and choose the correct CSV file you want to upload.
