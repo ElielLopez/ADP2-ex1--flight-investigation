@@ -1,15 +1,17 @@
 ﻿using ADP2.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ADP2.ViewModel
 {
-    internal class DashBoardViewModel : BaseNotify
+    internal class DashBoardViewModel : INotifyPropertyChanged
     {
         private DashBoardModel model;
+        public float airS;
         public DashBoardViewModel(DashBoardModel model)
         {
             this.model = model;
@@ -25,13 +27,32 @@ namespace ADP2.ViewModel
         {
             get
             {
+                
+                Console.WriteLine("VIEWMODEL GET {0}", model.AirSpeed);
                 return model.AirSpeed;
+            }
+            set
+            {
+                //model.AirSpeed = value;
+                airS = model.AirSpeed;
+                NotifyPropertyChanged("VM_AirSpeed");
+            }
+        }
+        private void NotifyPropertyChanged(string v)
+        {
+            if (this.PropertyChanged != null)
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(v));
             }
         }
 
-        internal float setAirSpeed()
+        public event PropertyChangedEventHandler PropertyChanged;
+/*        public void onPropertyChanged(string propName)
         {
-            return this.model.AirSpeed;
-        }
+            if (PropertyChanged != null)
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+            }
+        }*/
     }
 }

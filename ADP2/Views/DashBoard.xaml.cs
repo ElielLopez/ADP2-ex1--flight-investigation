@@ -24,10 +24,13 @@ namespace ADP2.Views
     public partial class DashBoard : UserControl
     {
         private DashBoardViewModel vm;
+        private DashBoardModel mod;
+        private float aspeed;
         public DashBoard()
         {
             InitializeComponent();
             vm = new DashBoardViewModel(new DashBoardModel());
+            mod = new DashBoardModel();
             DataContext = vm;
         }
 
@@ -47,9 +50,34 @@ namespace ADP2.Views
             }
             vm.OpenXMLFile(filename);
         }
-        public void setValueAirSpeed()
+
+/*        public void getDashValues()
         {
-            AirSpeedVal.Content =  vm.setAirSpeed().ToString();
+            this.aspeed = vm.VM_AirSpeed;
+            //this.aspeed = mod.AirSpeed;
+            AirSpeedVal.Content = aspeed;
+            GroundSpeedVal.Content = aspeed;
+            Console.WriteLine("THIS IS AIRSPEED {0}", aspeed);
+        }*/
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //getDashValues();
+            this.aspeed = vm.VM_AirSpeed;
+            
+            AirSpeedVal.Content = aspeed;
+            GroundSpeedVal.Content = aspeed;
+            Console.WriteLine("VIEWMODEL AIRSPEED {0}", aspeed);
+
+
+            AirSpeedVal.Content = vm.VM_AirSpeed;
+            Console.WriteLine("---------------- AIRSPEED {0}", AirSpeedVal.Content);
+
+
+            this.aspeed = mod.AirSpeed;
+            Console.WriteLine("MODEL AIRSPEED {0}", aspeed);
+
+
         }
     }
 }

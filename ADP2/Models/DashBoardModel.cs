@@ -10,27 +10,23 @@ namespace ADP2.Models
 {
     public class DashBoardModel : INotifyPropertyChanged
     {
-        // Rudder:1
-        //Throttle:2
-        //AireSpeed
-        // the value of AireSpeed in line number 100 is "4.5"
+
+        static Dictionary<string, int> indices = new Dictionary<string, int>();
+        public static int aileronIndex;
+        public static int elevatorIndex;
+        public static int throttleIndex;
+        public static int rudderIndex;
+        public static int airSpeedIndex;
+        public static int altimeterIndex;
+        public static int yawIndex;
+        public static int rollIndex;
+        public static int pitchIndex;
         private float airSpeed;
-        int aileronIndex = 0;
         float aileronVal = 0;
-        int elevatorIndex = 0;
         float elevatorVal = 0;
-        int throttleIndex = 0;
         float throttleVal = 0;
-        int rudderIndex = 0;
         float rudderVal = 0;
-        int airSpeedIndex = 0;
-        int altimeterIndex = 0;
         int headingIndex = 0;
-        int yawIndex = 0;
-        int rollIndex = 0;
-        int pitchIndex = 0;
-/*        char[] delimeters = new char[] { ',' };
-        string[] vals = arrText[i].Split(delimeters, StringSplitOptions.None);*/
 
         public void openXML(string filename)
         {
@@ -66,47 +62,76 @@ namespace ADP2.Models
             {
                 if (listOfNamesFinal[i] == "aileron")
                 {
-                    aileronIndex = i;
+                    if (!(indices.ContainsKey("aileron")))
+                    {
+                        indices.Add("aileron", i);
+                    }
                 }
                 if (listOfNamesFinal[i] == "elevator")
                 {
-                    elevatorIndex = i;
+                    if (!(indices.ContainsKey("elevator")))
+                    {
+                        indices.Add("elevator", i);
+                    }
                 }
                 if (listOfNamesFinal[i] == "throttle")
                 {
-                    throttleIndex = i;
+                    if (!(indices.ContainsKey("throttle")))
+                    {
+                        indices.Add("throttle", i);
+                    }
                 }
                 if (listOfNamesFinal[i] == "rudder")
                 {
-                    rudderIndex = i;
+                    if (!(indices.ContainsKey("rudder")))
+                    {
+                        indices.Add("rudder", i);
+                    }
                 }
                 if (listOfNamesFinal[i] == "airspeed-kt")
                 {
-                    airSpeedIndex = i;
+                    if (!(indices.ContainsKey("airspeed-kt")))
+                    {
+                        indices.Add("airspeed-kt", i);
+                    }
                 }
                 if (listOfNamesFinal[i] == "altimeter_indicated-altitude-ft")
                 {
-                    altimeterIndex = i;
+                    if (!(indices.ContainsKey("altimeter_indicated-altitude-ft")))
+                    {
+                        indices.Add("altimeter_indicated-altitude-ft", i);
+                    }
                 }
                 if (listOfNamesFinal[i] == "heading-deg")
                 {
-                    headingIndex = i;
+                    if (!(indices.ContainsKey("heading-deg")))
+                    {
+                        indices.Add("heading-deg", i);
+                    }
                 }
                 if (listOfNamesFinal[i] == "pitch-deg")
                 {
-                    pitchIndex = i;
+                    if (!(indices.ContainsKey("pitch-deg")))
+                    {
+                        indices.Add("pitch-deg", i);
+                    }
                 }
                 if (listOfNamesFinal[i] == "side-slip-deg")
                 {
-                    yawIndex = i;
+                    if (!(indices.ContainsKey("side-slip-deg")))
+                    {
+                        indices.Add("side-slip-deg", i);
+                    }
                 }
                 if (listOfNamesFinal[i] == "roll-deg")
                 {
-                    rollIndex = i;
+                    if (!(indices.ContainsKey("roll-deg")))
+                    {
+                        indices.Add("roll-deg", i);
+                    }
                 }
             }
-
-            //Console.WriteLine("TABTAB");
+            //Console.WriteLine("whatgf");
         }
 
 
@@ -116,18 +141,30 @@ namespace ADP2.Models
         {
             get
             {
+
+                Console.WriteLine("From MODEL GET {0}", airSpeed);
                 return airSpeed;
             }
             set
             {
-                airSpeed = value;
+                airSpeed = value; //2.760
+                Console.WriteLine("From MODEL SSSSET {0}", airSpeed);
                 NotifyPropertyChanged("AirSpeed");
+                
+            }
+        }
+
+        public Dictionary<string, int> indicVals
+        {
+            get
+            {
+                return indices;
             }
         }
 
         private void NotifyPropertyChanged(string v)
         {
-            if(this.PropertyChanged != null)
+            if (this.PropertyChanged != null)
             {
                 this.PropertyChanged(this, new PropertyChangedEventArgs(v));
             }

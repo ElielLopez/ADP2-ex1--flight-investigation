@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ADP2.Models
 {
-    class UserGUIModel : IUserGUI
+    class UserGUIModel : DashBoardModel, IUserGUI
     {
         private int sleepTime;
         private int counter = 0;
@@ -24,6 +24,7 @@ namespace ADP2.Models
         public float speedValue;
         public double videoSlider;
         private int lineNum;
+        DashBoardModel dashModel;
         public UserGUIModel()
         {
             sleepTime = 100;
@@ -33,7 +34,9 @@ namespace ADP2.Models
             defaultJumper = false;
             speedValue = 1;
             videoSlider = 0;
+            dashModel = new DashBoardModel();
         }
+
 
         public void open(string filename)
         {
@@ -44,7 +47,7 @@ namespace ADP2.Models
 
                 while ((ln = file.ReadLine()) != null)
                 {
-                    Console.WriteLine(ln);
+                    //Console.WriteLine(ln);
                     counter++;
                 }
                 file.Close();
@@ -57,7 +60,6 @@ namespace ADP2.Models
             arrText = File.ReadAllLines(filename);
             new Thread(delegate ()
             {
-                
                 while (true)
                 {
                     try
@@ -78,17 +80,18 @@ namespace ADP2.Models
                                 i = (int)videoSlider;
                                 defaultTimePoint = false;
                             }
-                           
+
                             // in line i i want to take the value of column "aileron" and send it to XAML
                             currLine = arrText[i];
-                            
-                            string[] vals = arrText[i].Split(delimeters, StringSplitOptions.None);
-                            Console.WriteLine(vals[1]);
 
+                            string[] vals = arrText[i].Split(delimeters, StringSplitOptions.None);
+                            this.AirSpeed = float.Parse(vals[this.indicVals["airspeed-kt"]]);
+                            //dashModel.AirSpeed = float.Parse(vals[this.indicVals["airspeed-kt"]]);
+                            Console.WriteLine("the airspeed is {0}", this.AirSpeed);
                             Byte[] data = System.Text.Encoding.ASCII.GetBytes(currLine + "\r\n");
                             stream.Write(data, 0, data.Length);
-                            Console.Write(currLine);
-                            while(isPaused)
+                            Console.WriteLine(currLine);
+                            while (isPaused)
                             {
                                 Thread.Sleep(sleepTime);
                             }
@@ -132,7 +135,7 @@ namespace ADP2.Models
                 NotifyPropertyChanged("Pause");
             }
         }
-        public float Forward 
+        public float Forward
         {
             get
             {
@@ -144,7 +147,7 @@ namespace ADP2.Models
                 NotifyPropertyChanged("Forward");
             }
         }
-        public float Backward 
+        public float Backward
         {
             get
             {
