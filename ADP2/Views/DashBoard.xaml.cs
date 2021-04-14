@@ -51,34 +51,6 @@ namespace ADP2.Views
             vm.OpenXMLFile(filename);
         }
 
-/*        public void getDashValues()
-        {
-            this.aspeed = vm.VM_AirSpeed;
-            //this.aspeed = mod.AirSpeed;
-            AirSpeedVal.Content = aspeed;
-            GroundSpeedVal.Content = aspeed;
-            Console.WriteLine("THIS IS AIRSPEED {0}", aspeed);
-        }*/
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            //getDashValues();
-            this.aspeed = vm.VM_AirSpeed;
-            
-            AirSpeedVal.Content = aspeed;
-            GroundSpeedVal.Content = aspeed;
-            Console.WriteLine("VIEWMODEL AIRSPEED {0}", aspeed);
-
-
-            AirSpeedVal.Content = vm.VM_AirSpeed;
-            Console.WriteLine("---------------- AIRSPEED {0}", AirSpeedVal.Content);
-
-
-            this.aspeed = mod.AirSpeed;
-            Console.WriteLine("MODEL AIRSPEED {0}", aspeed);
-
-
-        }
     }
 }
 //vm.PropertyChanged += (sender, args) => { Vm_PropertyChanged(sender, args)};

@@ -8,7 +8,62 @@
         mc:Ignorable="d" 
         Title="MainWindow" Height="650" Width="1000">
     <Grid Background="DimGray">
-        <Views:DashBoard Margin="180,138,-180,-138"/>
-        <Views:UserGui Margin="10,10,418,439"/>
+        <Views:DashBoard Margin="0,0,415,442"/>
+        <Views:UserGui Margin="0,499,366,0"/>
+        <Views:Joystick Margin="600,146,10,161"/>
+
+
+        <Slider x:Name="Throttle" Orientation="Vertical" HorizontalContentAlignment="Left" Background="DimGray" Foreground="Black" Value="{Binding VM_Throttle}"  Maximum="1" Minimum="-1" TickFrequency="0.05" TickPlacement="BottomRight"
+                HorizontalAlignment="Left" VerticalAlignment="Center" Width="42" Margin="766,-152,0,359" IsSnapToTickEnabled="False" Height="412" RenderTransformOrigin="0.5,0.5">
+            <Slider.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Slider.RenderTransform>
+        </Slider>
+        <Slider x:Name="Rudder" Background="DimGray" Foreground="Black" Value="{Binding Path=VM_Rudder}" Maximum="1" Minimum="-1" TickFrequency="0.05" TickPlacement="BottomRight"
+                HorizontalAlignment="Left" VerticalAlignment="Center" Margin="577,107,-3,478" Width="418" IsSnapToTickEnabled="False" Height="34"/>
+
+
+        <TextBlock FontFamily="Arial Black" FontSize="14" Foreground="Black" Margin ="983,280,-71,309">
+  Elevator
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90.0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+
+        <TextBlock FontFamily="Arial Black" FontSize="14" Foreground="Black" Margin ="764,499,156,93">
+  Aileron
+            <TextBlock.RenderTransform>
+                <RotateTransform Angle="0" />
+            </TextBlock.RenderTransform>
+        </TextBlock>
+
+        <TextBlock FontFamily="Arial Black" FontSize="14" Foreground="Black" Margin ="752,0,156,559">
+  Throttle
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+
+        <TextBlock FontFamily="Arial Black" FontSize="14" Foreground="Black" Margin ="752,83,174,512">
+  Rudder
+            <TextBlock.RenderTransform>
+                <RotateTransform Angle="0" />
+            </TextBlock.RenderTransform>
+        </TextBlock>
     </Grid>
 </Window>

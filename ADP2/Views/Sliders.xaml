@@ -10,7 +10,7 @@
 
         <Slider x:Name="Throttle" Orientation="Vertical" HorizontalContentAlignment="Left" Background="DimGray" Foreground="Black" Value="{Binding VM_Throttle}"  Maximum="1" Minimum="-1" TickFrequency="0.05" TickPlacement="BottomRight"
                 HorizontalAlignment="Left" VerticalAlignment="Center" Width="41" Margin="418,-1,-279,0" IsSnapToTickEnabled="False" Height="451"/>
-        <Slider x:Name="Rudder" Background="DimGray" Foreground="Black" Value="{Binding VM_Rudder}" Maximum="1" Minimum="-1" TickFrequency="0.05" TickPlacement="BottomRight"
+        <Slider x:Name="Rudder" Background="DimGray" Foreground="Black" Value="{Binding Path=VM_Rudder}" Maximum="1" Minimum="-1" TickFrequency="0.05" TickPlacement="BottomRight"
                 HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,416,-238,0" Width="418" IsSnapToTickEnabled="False" Height="34"/>
 
         <TextBlock FontFamily="Arial Black" FontSize="14" Foreground="Black" Margin ="393,256,-284,164">

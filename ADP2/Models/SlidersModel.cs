@@ -21,7 +21,7 @@ namespace ADP2.Models
             set
             {
                 throttle = value;
-                INotifyPropertyChanged("Throttle");
+                NotifyPropertyChanged("Throttle");
             }
         }
 
@@ -34,13 +34,13 @@ namespace ADP2.Models
             set
             {
                 rudder = value;
-                INotifyPropertyChanged("Rudder");
+                NotifyPropertyChanged("Rudder");
             }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void INotifyPropertyChanged(string propName)
+        private void NotifyPropertyChanged(string propName)
         {
             if(this.PropertyChanged != null)
             {

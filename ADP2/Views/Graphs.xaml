@@ -18,17 +18,15 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Canvas x:Name="featureNames" Grid.Row="0" Grid.Column="0" Background="GhostWhite">
+            <Canvas x:Name="featureNames" Grid.Row="0" Grid.Column="0" Background="GhostWhite" Margin="0,0,0,79">
                 <ListBox>
-                    <ListBox.Items>
-                        <ListBoxItem Content="Item 1" Width="239"/>
-                        <ListBoxItem Content="Item 2"/>
-                        <ListBoxItem Content="Item 3"/>
-                        <ListBoxItem Content="Item 4"/>
-                        <ListBoxItem Content="Item 5"/>
-                        <ListBoxItem Content="Item 6"/>
-                        <ListBoxItem Content="Item 7"/>
-                    </ListBox.Items>
+                    <ListBoxItem Content="Item 1" Width="396"/>
+                    <ListBoxItem Content="Item 2"/>
+                    <ListBoxItem Content="Item 3" Width="394"/>
+                    <ListBoxItem Content="Item 4"/>
+                    <ListBoxItem Content="Item 5"/>
+                    <ListBoxItem Content="Item 6"/>
+                    <ListBoxItem Content="Item 7"/>
                 </ListBox>
             </Canvas>
             <!--ProgressBar x:Name="videoPregress" HorizontalAlignment="Left" Height="12" Margin="81,177,-484,-49" Grid.Row="1" VerticalAlignment="Top" Width="651" Grid.Column="1"/-->

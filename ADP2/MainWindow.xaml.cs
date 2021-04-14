@@ -109,7 +109,7 @@ namespace ADP2
             }
         }*/
 
-        private void OpenXMLFile_Click(object sender, RoutedEventArgs e)
+/*        private void OpenXMLFile_Click(object sender, RoutedEventArgs e)
         {
             string line;
             int temp = 0;
@@ -158,6 +158,6 @@ namespace ADP2
         {
             pause = true;
             play = false;
-        }
+        }*/
     }
 }

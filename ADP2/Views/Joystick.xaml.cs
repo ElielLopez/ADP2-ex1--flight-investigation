@@ -38,26 +38,18 @@ namespace ADP2.Views
         public static readonly DependencyProperty ElevatorStepProperty =
             DependencyProperty.Register("ElevatorStep", typeof(double), typeof(Joystick), new PropertyMetadata(1.0));
 
-        /* Unstable - needs work */
-        ///// <summary>Indicates whether the joystick knob resets its place after being released</summary>
-        //public static readonly DependencyProperty ResetKnobAfterReleaseProperty =
-        //    DependencyProperty.Register(nameof(ResetKnobAfterRelease), typeof(bool), typeof(VirtualJoystick), new PropertyMetadata(true));
-
-        /// <summary>Current Aileron in degrees from 0 to 360</summary>
         public double Aileron
         {
             get { return Convert.ToDouble(GetValue(AileronProperty)); }
             set { SetValue(AileronProperty, value); }
         }
 
-        /// <summary>current Elevator (or "power"), from 0 to 100</summary>
         public double Elevator
         {
             get { return Convert.ToDouble(GetValue(ElevatorProperty)); }
             set { SetValue(ElevatorProperty, value); }
         }
 
-        /// <summary>How often should be raised StickMove event in degrees</summary>
         public double AileronStep
         {
             get { return Convert.ToDouble(GetValue(AileronStepProperty)); }
